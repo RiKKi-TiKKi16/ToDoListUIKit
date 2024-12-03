@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BF72CFF84140026341A /* ListViewController.swift */; };
+		B3B37BFA2CFF87520026341A /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BF92CFF87520026341A /* ToDoCell.swift */; };
+		B3B37BFD2CFF91590026341A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BFC2CFF91590026341A /* UIFont+.swift */; };
+		B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BFE2CFF94DC0026341A /* UIColor+.swift */; };
 		B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */; };
 		B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */; };
 		B3EC4AE42CFDCDB000296721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3EC4AE32CFDCDB000296721 /* Assets.xcassets */; };
 		B3EC4AE72CFDCDB000296721 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B3EC4AE62CFDCDB000296721 /* Base */; };
+		B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */; };
+		B3EC4B142CFE3FF300296721 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B132CFE3FF300296721 /* Router.swift */; };
+		B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B152CFE41AE00296721 /* Assembler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3B37BF72CFF84140026341A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		B3B37BF92CFF87520026341A /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		B3B37BFC2CFF91590026341A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		B3B37BFE2CFF94DC0026341A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		B3EC4AD72CFDCDAF00296721 /* ToDoListUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B3EC4AE32CFDCDB000296721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3EC4AE62CFDCDB000296721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3EC4AE82CFDCDB000296721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProvider.swift; sourceTree = "<group>"; };
+		B3EC4B132CFE3FF300296721 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B3EC4B152CFE41AE00296721 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3B37BF62CFF83A30026341A /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37BF72CFF84140026341A /* ListViewController.swift */,
+				B3B37BF92CFF87520026341A /* ToDoCell.swift */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		B3B37BFB2CFF914D0026341A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37BFC2CFF91590026341A /* UIFont+.swift */,
+				B3B37BFE2CFF94DC0026341A /* UIColor+.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B3EC4ACE2CFDCDAF00296721 = {
 			isa = PBXGroup;
 			children = (
@@ -53,8 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				B3EC4B102CFE348800296721 /* SupportingFiles */,
-				B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */,
-				B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */,
+				B3EC4B172CFE5BC300296721 /* Application */,
+				B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */,
+				B3EC4B132CFE3FF300296721 /* Router.swift */,
+				B3EC4B152CFE41AE00296721 /* Assembler.swift */,
+				B3B37BF62CFF83A30026341A /* ToDoList */,
+				B3B37BFB2CFF914D0026341A /* Helpers */,
 			);
 			path = ToDoListUIKit;
 			sourceTree = "<group>";
@@ -67,6 +103,15 @@
 				B3EC4AE82CFDCDB000296721 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		B3EC4B172CFE5BC300296721 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */,
+				B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +184,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EC4B142CFE3FF300296721 /* Router.swift in Sources */,
 				B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */,
+				B3B37BFA2CFF87520026341A /* ToDoCell.swift in Sources */,
+				B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */,
+				B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */,
+				B3B37BFD2CFF91590026341A /* UIFont+.swift in Sources */,
 				B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */,
+				B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */,
+				B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
