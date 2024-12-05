@@ -1,5 +1,5 @@
 //
-//  ToDoCell.swift
+//  ListItemCell.swift
 //  ToDoListUIKit
 //
 //  Created by Anna Ruslanovna on 03.12.2024.
@@ -8,10 +8,10 @@
 import UIKit
 
 protocol CellDelegateProtocol: AnyObject {
-    func cell(_ cell: ToDoCell, completed: Bool) //????? зачем передавать себя если там будет айдишник у каждой сел уникальный
+    func cell(_ cell: ListItemCell, completed: Bool) //????? зачем передавать себя если там будет айдишник у каждой сел уникальный
 }
 
-class ToDoCell: UITableViewCell {
+class ListItemCell: UITableViewCell {
     weak var delegate: CellDelegateProtocol?
     
     private lazy var checkButton: UIButton = {

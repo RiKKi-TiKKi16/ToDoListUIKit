@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BF72CFF84140026341A /* ListViewController.swift */; };
-		B3B37BFA2CFF87520026341A /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BF92CFF87520026341A /* ToDoCell.swift */; };
+		B3B37BFA2CFF87520026341A /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BF92CFF87520026341A /* ListItemCell.swift */; };
 		B3B37BFD2CFF91590026341A /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BFC2CFF91590026341A /* UIFont+.swift */; };
 		B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37BFE2CFF94DC0026341A /* UIColor+.swift */; };
 		B3B37C022D009BDD0026341A /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3B37C012D009BDD0026341A /* SF-Pro-Display-Regular.otf */; };
@@ -19,6 +19,9 @@
 		B3B37C0D2D01D6530026341A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C0C2D01D6530026341A /* NetworkManager.swift */; };
 		B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C122D01FB090026341A /* ListPresenter.swift */; };
 		B3B37C152D01FEFB0026341A /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C142D01FEFB0026341A /* ListInteractor.swift */; };
+		B3B37C172D0225C80026341A /* ListItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C162D0225C80026341A /* ListItemEntity.swift */; };
+		B3B37C1B2D0228110026341A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */; };
+		B3B37C1D2D0228260026341A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C1C2D0228260026341A /* CoreDataManager.swift */; };
 		B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */; };
 		B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */; };
 		B3EC4AE42CFDCDB000296721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3EC4AE32CFDCDB000296721 /* Assets.xcassets */; };
@@ -30,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		B3B37BF72CFF84140026341A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		B3B37BF92CFF87520026341A /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		B3B37BF92CFF87520026341A /* ListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
 		B3B37BFC2CFF91590026341A /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		B3B37BFE2CFF94DC0026341A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		B3B37C012D009BDD0026341A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -41,6 +44,9 @@
 		B3B37C0C2D01D6530026341A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B3B37C122D01FB090026341A /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		B3B37C142D01FEFB0026341A /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		B3B37C162D0225C80026341A /* ListItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemEntity.swift; sourceTree = "<group>"; };
+		B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		B3B37C1C2D0228260026341A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B3EC4AD72CFDCDAF00296721 /* ToDoListUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,10 +72,11 @@
 		B3B37BF62CFF83A30026341A /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				B3B37BF92CFF87520026341A /* ToDoCell.swift */,
+				B3B37BF92CFF87520026341A /* ListItemCell.swift */,
 				B3B37BF72CFF84140026341A /* ListViewController.swift */,
 				B3B37C122D01FB090026341A /* ListPresenter.swift */,
 				B3B37C142D01FEFB0026341A /* ListInteractor.swift */,
+				B3B37C162D0225C80026341A /* ListItemEntity.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -103,6 +110,15 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
+		B3B37C182D0227F80026341A /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */,
+				B3B37C1C2D0228260026341A /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
 		B3EC4ACE2CFDCDAF00296721 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +138,7 @@
 		B3EC4AD92CFDCDAF00296721 /* ToDoListUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B3B37C182D0227F80026341A /* CoreDataManager */,
 				B3B37C092D01D6010026341A /* NetworkManager */,
 				B3B37BFB2CFF914D0026341A /* Helpers */,
 				B3EC4B102CFE348800296721 /* SupportingFiles */,
@@ -230,7 +247,8 @@
 			files = (
 				B3EC4B142CFE3FF300296721 /* Router.swift in Sources */,
 				B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */,
-				B3B37BFA2CFF87520026341A /* ToDoCell.swift in Sources */,
+				B3B37C172D0225C80026341A /* ListItemEntity.swift in Sources */,
+				B3B37BFA2CFF87520026341A /* ListItemCell.swift in Sources */,
 				B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */,
 				B3B37C0D2D01D6530026341A /* NetworkManager.swift in Sources */,
 				B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */,
@@ -241,6 +259,8 @@
 				B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */,
 				B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */,
 				B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */,
+				B3B37C1D2D0228260026341A /* CoreDataManager.swift in Sources */,
+				B3B37C1B2D0228110026341A /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +473,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */;
+			name = CoreDataModel.xcdatamodeld;
+			path = /Users/annaruslanovna/Documents/ToDoListUIKit/ToDoListUIKit/CoreDataManager/CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B3EC4ACF2CFDCDAF00296721 /* Project object */;
 }

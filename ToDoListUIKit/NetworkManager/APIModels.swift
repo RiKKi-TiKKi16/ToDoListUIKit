@@ -8,11 +8,11 @@
 import Foundation
 // MARK: - Forma
 struct Forma: Codable {
-    let todos: [APIModel]
+    let todos: [TodoAPIModel]
 }
 
 // MARK: - Todo
-struct APIModel: Codable {
+struct TodoAPIModel: Codable {
     let id: Int
     let todo: String
     let completed: Bool

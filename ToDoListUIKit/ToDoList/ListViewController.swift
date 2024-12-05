@@ -12,7 +12,7 @@ protocol ListPresenterProtocol {
 }
 
 class ListViewController: UIViewController, ListViewProtocol {
-    var data: [APIModel] = []
+    var data: [ListItemEntity] = []
     var presenter: ListPresenterProtocol?
     
     private lazy var searchController: UISearchController = {
@@ -81,7 +81,7 @@ class ListViewController: UIViewController, ListViewProtocol {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ToDoCell.self, forCellReuseIdentifier: String(describing: ToDoCell.self))
+        tableView.register(ListItemCell.self, forCellReuseIdentifier: String(describing: ListItemCell.self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,30 +98,38 @@ class ListViewController: UIViewController, ListViewProtocol {
         toolbarLabel.sizeToFit()
     }
     
-    func deliver(_ data: [APIModel]) {
+    func deliver(_ data: [ListItemEntity]) {
         self.data = data
+        tableView.reloadData()
+        setToolbarTitle("\(data.count) Задач")
     }
 
 }
 
 extension ListViewController: CellDelegateProtocol {
-    func cell(_ cell: ToDoCell, completed: Bool) {}
+    func cell(_ cell: ListItemCell, completed: Bool) {
+        
+    }
 }
 
 //MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = String(describing: ToDoCell.self)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ToDoCell else { return UITableViewCell() }
+        let identifier = String(describing: ListItemCell.self)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ListItemCell else { return UITableViewCell() }
         
-        cell.configure(title: "title",
-                       description: "description щшрпавывапрол вапрол вапролд укенгшормсв45678 к67готимсчыкенгш вкенгшолимсыкенго анегншголтимсчваншго акенготоимсчыкенг мвкенгшотьитисчыккнегнгш иыукенг9897874кап аыцунгшщдюжджж пыйф]ячяфйцукенгшж авуккнгшщхэжьбтимсчяфйцукн98978766442123467890=11ываяч 0-хжюбьтирнггш кук009876543231ычс 0-зжьтимм некукккго ",
-                       date: "11.11.11",
-                       isCompleted: Bool.random())
+        let model = data[indexPath.row]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        cell.configure(title: model.title,
+                       description: model.subtitle,
+                       date: dateFormatter.string(from: model.date),
+                       isCompleted: model.completed)
         cell.delegate = self
         return cell
     }

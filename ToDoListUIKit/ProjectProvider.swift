@@ -14,7 +14,7 @@ class ProjectProvider {
     
     init(window: UIWindow) {
         let networkManager = NetworkManager(urlString: "https://dummyjson.com")
-        let assembler = Assembler(networkManager: networkManager)
+        let assembler = Assembler(networkManager: networkManager, localStorage: CoreDataManager())
         let router = Router(assembler: assembler, window: window)
         
         self.router = router
@@ -25,3 +25,4 @@ class ProjectProvider {
         router.start()
     }
 }
+

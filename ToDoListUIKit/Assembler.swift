@@ -20,9 +20,11 @@ protocol DetailAssemblerProtocol {
 //Assembler - Конструктор. Собирает объекты и раздает зависимости.
 class Assembler {
     let networkManager: NetworkManager
+    let localStorage: CoreDataManager
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager, localStorage: CoreDataManager) {
         self.networkManager = networkManager
+        self.localStorage = localStorage
     }
 }
 
@@ -47,6 +49,7 @@ extension Assembler: ListAssemblerProtocol {
         interactor.presenter = presenter
         
         interactor.networkManager = networkManager
+        interactor.localStore = localStorage
         
         return vc
     }

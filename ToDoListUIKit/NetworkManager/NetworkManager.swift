@@ -38,7 +38,7 @@ class NetworkManager {
 }
 
 extension NetworkManager: ListNetworkProtocol {
-    func loadToDos(completion: @escaping (ResultCompletion<[APIModel]>) -> Void) {
+    func loadTodos(completion: @escaping (ResultCompletion<[TodoAPIModel]>) -> Void) {
         let request = createRequest(appendedPathComponent: "todos")
         executeRequest(request, type: Forma.self) { result in
             switch result {

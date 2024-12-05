@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ListViewProtocol: AnyObject {
-    func deliver(_ data:[APIModel])
+    func deliver(_ data:[ListItemEntity])
 }
 
 protocol ListInteractorProtocol {
@@ -26,7 +26,7 @@ class ListPresenter: ListPresenterProtocol, ListInteractorOutputProtocol {
         interactor?.loadData()
     }
     
-    func deliverData(_ data: [APIModel]) {
+    func deliverData(_ data: [ListItemEntity]) {
         view?.deliver(data)
     }
     
