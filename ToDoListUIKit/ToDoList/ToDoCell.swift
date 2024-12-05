@@ -7,20 +7,17 @@
 
 import UIKit
 
-protocol ToDoCellDelegate: AnyObject {
-    func cell(_ cell: ToDoCell, completed: Bool)
+protocol CellDelegateProtocol: AnyObject {
+    func cell(_ cell: ToDoCell, completed: Bool) //????? зачем передавать себя если там будет айдишник у каждой сел уникальный
 }
 
 class ToDoCell: UITableViewCell {
-    
-    weak var delegate: ToDoCellDelegate?
+    weak var delegate: CellDelegateProtocol?
     
     private lazy var checkButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "CheckmsrkSelected"), for: .selected)
-        button.setImage(UIImage(named: "CheckmsrkDisabled"), for: .normal)
-        
-        button.addTarget(self, action: #selector(checkButtonAction), for: .touchUpInside)
+        button.setImage(UIImage(named: "completed"), for: .selected)
+        button.setImage(UIImage(named: "notCompleted"), for: .normal)
         
         contentView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -29,9 +26,9 @@ class ToDoCell: UITableViewCell {
             button.topAnchor.constraint(equalTo: contentView.topAnchor),
             button.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
-        
         button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
+        button.addTarget(self, action: #selector(checkButtonAction), for: .touchUpInside)
         return button
     }()
     
@@ -39,9 +36,6 @@ class ToDoCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 6
-        stack.addArrangedSubview(title)
-        stack.addArrangedSubview(descriptionSubtitle)
-        stack.addArrangedSubview(taskDate)
         
         contentView.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -51,18 +45,25 @@ class ToDoCell: UITableViewCell {
             stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
+        
+        stack.addArrangedSubview(title)
+        stack.addArrangedSubview(descriptionSubtitle)
+        stack.addArrangedSubview(taskDate)
         return stack
     }()
     
+    
+    
     private lazy var title: UILabel = {
         let title = UILabel()
-        title.attributedText = normalTitleAttrStr(title: "")
+        title.numberOfLines = 1
         return title
     }()
     
     private lazy var descriptionSubtitle: UILabel = {
         let descriptionSubtitle = UILabel()
-        descriptionSubtitle.textColor = .textWhite
+        descriptionSubtitle.numberOfLines = 2
+                                           //нужно настроить шрифт и задать высоту строк
         descriptionSubtitle.font = .caption
         return descriptionSubtitle
     }()
@@ -74,14 +75,11 @@ class ToDoCell: UITableViewCell {
         return date
     }()
     
-    private func normalTitleAttrStr(title: String) -> NSAttributedString {
-        return .init(string: title, attributes: [.foregroundColor: UIColor.textWhite,
-                                                 .font: UIFont.button])
+    private func notCompleted(title: String) -> NSAttributedString {
+        return .init(string: title, attributes: [.foregroundColor: UIColor.textWhite, .font: UIFont.button])
     }
-    
-    private func completedTitleAttrStr(title: String) -> NSAttributedString {
-        return .init(string: title, attributes: [.foregroundColor: UIColor.textGray,
-                                                 .font: UIFont.button,
+    private func completed(title: String) -> NSAttributedString {
+        return .init(string: title, attributes: [.foregroundColor: UIColor.textGray, .font: UIFont.button,
                                                  NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
                                                  NSAttributedString.Key.strikethroughColor: UIColor.textGray])
     }
@@ -95,23 +93,21 @@ class ToDoCell: UITableViewCell {
                   isCompleted: isCompleted)
         
         delegate?.cell(self, completed: isCompleted)
-        
     }
     
     func configure(title:String, description:String, date:String, isCompleted: Bool) {
+//        UIView.transition(with: self.title, duration: 0.3, options: .transitionCrossDissolve) {
+//            self.title.attributedText = isCompleted ? self.completed(title: title) : self.notCompleted(title: title)
+//        }
+//        UIView.transition(with: self.descriptionSubtitle, duration: 0.3, options: .transitionCrossDissolve) {
+//            self.descriptionSubtitle.textColor = isCompleted ? .textGray : .textWhite
+//        }
         
-        UIView.transition(with: self.title, duration: 0.3, options: .transitionCrossDissolve) {
-            self.title.attributedText = isCompleted ? self.completedTitleAttrStr(title: title) : self.normalTitleAttrStr(title: title)
-        }
-        
-        self.descriptionSubtitle.text = description
+        self.title.attributedText = isCompleted ? self.completed(title: title) : self.notCompleted(title: title)
+        self.descriptionSubtitle.text = description //засунуть их вместе?
+        self.descriptionSubtitle.textColor = isCompleted ? .textGray : .textWhite //он не белый а прозрачный на 0.5 серого вообще нет
         self.taskDate.text = date
-        
         self.checkButton.isSelected = isCompleted
-        
-        UIView.transition(with: self.descriptionSubtitle, duration: 0.3, options: .transitionCrossDissolve) {
-            self.descriptionSubtitle.textColor = isCompleted ? .textGray : .textWhite
-        }
     }
     
     override func didMoveToWindow() {

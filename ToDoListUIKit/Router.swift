@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol StartRouter_P: AnyObject {
+protocol StartRouterProtocol: AnyObject {
     func start()
 }
-protocol ListRouter_P {}
+protocol ListRouterProtocol {}
 
-protocol DetailRouter_P {}
+protocol DetailRouterProtocol {}
 
 //Router - Экспонент. Отвечает за переходы и отображение экранов/модулей.
-class Router: StartRouter_P {
-    let assembler: StartAssembler_P
+class Router: StartRouterProtocol {
+    let assembler: StartAssemblerProtocol
     let window: UIWindow
     var navController: UINavigationController!
     
-    init(assembler: StartAssembler_P, window: UIWindow) {
+    init(assembler: StartAssemblerProtocol, window: UIWindow) {
         self.assembler = assembler
         self.window = window
     }

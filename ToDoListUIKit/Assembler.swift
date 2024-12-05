@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol StartAssembler_P: AnyObject {
+protocol StartAssemblerProtocol: AnyObject {
     func createNavController() -> UINavigationController
 }
-protocol ListAssembler_P {
+protocol ListAssemblerProtocol {
     func createToDoListViewController() -> UIViewController
 }
-protocol DetailAssembler_P {
+protocol DetailAssemblerProtocol {
     func createToDoDetailViewController(id: String?) -> UIViewController
 }
 
@@ -23,16 +23,22 @@ class Assembler {
     
 }
 
-extension Assembler: StartAssembler_P {
+extension Assembler: StartAssemblerProtocol {
     func createNavController() -> UINavigationController {
         let navVC = UINavigationController(rootViewController: createToDoListViewController())
+        
+        navVC.navigationBar.prefersLargeTitles = true
+        //navVC.navigationBar.isTranslucent = true
+        
+        navVC.navigationBar.barStyle = .black
+        
+        
         return navVC
     }
 }
-extension Assembler: ListAssembler_P {
+extension Assembler: ListAssemblerProtocol {
     func createToDoListViewController() -> UIViewController {
         let vc = ListViewController()
-        //vc.view.backgroundColor = .magenta
         return vc
     }
 }
