@@ -19,26 +19,35 @@ protocol DetailAssemblerProtocol {
 
 //Assembler - Конструктор. Собирает объекты и раздает зависимости.
 class Assembler {
+    let networkManager: NetworkManager
     
-    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
 }
 
 extension Assembler: StartAssemblerProtocol {
     func createNavController() -> UINavigationController {
         let navVC = UINavigationController(rootViewController: createToDoListViewController())
-        
-        navVC.navigationBar.prefersLargeTitles = true
         //navVC.navigationBar.isTranslucent = true
-        
         navVC.navigationBar.barStyle = .black
-        
-        
+        navVC.navigationBar.prefersLargeTitles = true
         return navVC
     }
 }
 extension Assembler: ListAssemblerProtocol {
     func createToDoListViewController() -> UIViewController {
         let vc = ListViewController()
+        let presenter = ListPresenter()
+        vc.presenter = presenter
+        presenter.view = vc
+        
+        let interactor = ListInteractor()
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        interactor.networkManager = networkManager
+        
         return vc
     }
 }

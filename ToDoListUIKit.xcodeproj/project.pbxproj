@@ -15,6 +15,10 @@
 		B3B37C042D009C090026341A /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3B37C032D009C090026341A /* SFProText-Regular.ttf */; };
 		B3B37C062D009C320026341A /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3B37C052D009C320026341A /* SF-Pro-Text-Regular.otf */; };
 		B3B37C082D009C680026341A /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3B37C072D009C680026341A /* SF-Pro.ttf */; };
+		B3B37C0B2D01D63D0026341A /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C0A2D01D63D0026341A /* APIModels.swift */; };
+		B3B37C0D2D01D6530026341A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C0C2D01D6530026341A /* NetworkManager.swift */; };
+		B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C122D01FB090026341A /* ListPresenter.swift */; };
+		B3B37C152D01FEFB0026341A /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C142D01FEFB0026341A /* ListInteractor.swift */; };
 		B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */; };
 		B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */; };
 		B3EC4AE42CFDCDB000296721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3EC4AE32CFDCDB000296721 /* Assets.xcassets */; };
@@ -33,6 +37,10 @@
 		B3B37C032D009C090026341A /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		B3B37C052D009C320026341A /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		B3B37C072D009C680026341A /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
+		B3B37C0A2D01D63D0026341A /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		B3B37C0C2D01D6530026341A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B3B37C122D01FB090026341A /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		B3B37C142D01FEFB0026341A /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		B3EC4AD72CFDCDAF00296721 /* ToDoListUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +66,10 @@
 		B3B37BF62CFF83A30026341A /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				B3B37BF72CFF84140026341A /* ListViewController.swift */,
 				B3B37BF92CFF87520026341A /* ToDoCell.swift */,
+				B3B37BF72CFF84140026341A /* ListViewController.swift */,
+				B3B37C122D01FB090026341A /* ListPresenter.swift */,
+				B3B37C142D01FEFB0026341A /* ListInteractor.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -84,6 +94,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B3B37C092D01D6010026341A /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37C0A2D01D63D0026341A /* APIModels.swift */,
+				B3B37C0C2D01D6530026341A /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		B3EC4ACE2CFDCDAF00296721 = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +122,14 @@
 		B3EC4AD92CFDCDAF00296721 /* ToDoListUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B3B37C092D01D6010026341A /* NetworkManager */,
+				B3B37BFB2CFF914D0026341A /* Helpers */,
 				B3EC4B102CFE348800296721 /* SupportingFiles */,
 				B3EC4B172CFE5BC300296721 /* Application */,
 				B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */,
 				B3EC4B132CFE3FF300296721 /* Router.swift */,
 				B3EC4B152CFE41AE00296721 /* Assembler.swift */,
 				B3B37BF62CFF83A30026341A /* ToDoList */,
-				B3B37BFB2CFF914D0026341A /* Helpers */,
 			);
 			path = ToDoListUIKit;
 			sourceTree = "<group>";
@@ -212,9 +232,13 @@
 				B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */,
 				B3B37BFA2CFF87520026341A /* ToDoCell.swift in Sources */,
 				B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */,
+				B3B37C0D2D01D6530026341A /* NetworkManager.swift in Sources */,
 				B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */,
 				B3B37BFD2CFF91590026341A /* UIFont+.swift in Sources */,
+				B3B37C0B2D01D63D0026341A /* APIModels.swift in Sources */,
 				B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */,
+				B3B37C152D01FEFB0026341A /* ListInteractor.swift in Sources */,
+				B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */,
 				B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */,
 				B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */,
 			);

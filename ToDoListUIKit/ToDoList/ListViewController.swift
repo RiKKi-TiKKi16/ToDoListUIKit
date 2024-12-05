@@ -7,7 +7,13 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+protocol ListPresenterProtocol {
+    func loadData()
+}
+
+class ListViewController: UIViewController, ListViewProtocol {
+    var data: [APIModel] = []
+    var presenter: ListPresenterProtocol?
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
@@ -78,6 +84,11 @@ class ListViewController: UIViewController {
         tableView.register(ToDoCell.self, forCellReuseIdentifier: String(describing: ToDoCell.self))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.loadData()
+    }
+    
     @objc private func newNoteAction() {
         print("New note")
     }
@@ -86,6 +97,11 @@ class ListViewController: UIViewController {
         toolbarLabel.text = title
         toolbarLabel.sizeToFit()
     }
+    
+    func deliver(_ data: [APIModel]) {
+        self.data = data
+    }
+
 }
 
 extension ListViewController: CellDelegateProtocol {

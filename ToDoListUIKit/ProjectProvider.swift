@@ -13,7 +13,8 @@ class ProjectProvider {
     let router: StartRouterProtocol
     
     init(window: UIWindow) {
-        let assembler = Assembler()
+        let networkManager = NetworkManager(urlString: "https://dummyjson.com")
+        let assembler = Assembler(networkManager: networkManager)
         let router = Router(assembler: assembler, window: window)
         
         self.router = router
