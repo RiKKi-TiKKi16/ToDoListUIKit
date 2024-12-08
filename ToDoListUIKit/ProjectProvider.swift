@@ -18,7 +18,7 @@ class ProjectProvider {
         let router = Router(assembler: assembler, window: window)
         
         self.router = router
-        //assembler.router = router
+        assembler.router = router
     }
     
     func start() {

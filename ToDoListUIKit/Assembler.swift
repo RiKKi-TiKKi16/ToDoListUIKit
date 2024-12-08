@@ -19,6 +19,7 @@ protocol DetailAssemblerProtocol {
 
 //Assembler - Конструктор. Собирает объекты и раздает зависимости.
 class Assembler {
+    var router: Router!
     let networkManager: NetworkManager
     let localStorage: CoreDataManager
     
@@ -31,9 +32,9 @@ class Assembler {
 extension Assembler: StartAssemblerProtocol {
     func createNavController() -> UINavigationController {
         let navVC = UINavigationController(rootViewController: createToDoListViewController())
-        //navVC.navigationBar.isTranslucent = true
         navVC.navigationBar.barStyle = .black
         navVC.navigationBar.prefersLargeTitles = true
+        navVC.navigationBar.tintColor = .accentYellow
         return navVC
     }
 }
@@ -41,6 +42,7 @@ extension Assembler: ListAssemblerProtocol {
     func createToDoListViewController() -> UIViewController {
         let vc = ListViewController()
         let presenter = ListPresenter()
+        presenter.router = router
         vc.presenter = presenter
         presenter.view = vc
         
@@ -50,6 +52,24 @@ extension Assembler: ListAssemblerProtocol {
         
         interactor.networkManager = networkManager
         interactor.localStore = localStorage
+        
+        return vc
+    }
+}
+
+extension Assembler: DetailAssemblerProtocol {
+    func createToDoDetailViewController(id: String?) -> UIViewController {
+        let vc = DetailViewController()
+        
+        let presenter = DetailPresenter()
+        vc.presenter = presenter
+        presenter.view = vc
+        
+        let interactor = DetailInteractor(id: id)
+        interactor.presenter = presenter
+        interactor.localStore = localStorage
+        
+        presenter.interactor = interactor
         
         return vc
     }

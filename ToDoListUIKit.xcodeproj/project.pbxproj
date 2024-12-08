@@ -29,6 +29,9 @@
 		B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */; };
 		B3EC4B142CFE3FF300296721 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B132CFE3FF300296721 /* Router.swift */; };
 		B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4B152CFE41AE00296721 /* Assembler.swift */; };
+		B3F9C3B52D04A4F800348CDA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9C3B42D04A4F800348CDA /* DetailViewController.swift */; };
+		B3F9C3B72D04A57700348CDA /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9C3B62D04A57700348CDA /* DetailPresenter.swift */; };
+		B3F9C3B92D04A72B00348CDA /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9C3B82D04A72B00348CDA /* DetailInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProvider.swift; sourceTree = "<group>"; };
 		B3EC4B132CFE3FF300296721 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3EC4B152CFE41AE00296721 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		B3F9C3B42D04A4F800348CDA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B3F9C3B62D04A57700348CDA /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		B3F9C3B82D04A72B00348CDA /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +75,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B3B37BF62CFF83A30026341A /* ToDoList */ = {
+		B3B37BF62CFF83A30026341A /* List */ = {
 			isa = PBXGroup;
 			children = (
 				B3B37BF92CFF87520026341A /* ListItemCell.swift */,
@@ -78,7 +84,7 @@
 				B3B37C142D01FEFB0026341A /* ListInteractor.swift */,
 				B3B37C162D0225C80026341A /* ListItemEntity.swift */,
 			);
-			path = ToDoList;
+			path = List;
 			sourceTree = "<group>";
 		};
 		B3B37BFB2CFF914D0026341A /* Helpers */ = {
@@ -146,7 +152,8 @@
 				B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */,
 				B3EC4B132CFE3FF300296721 /* Router.swift */,
 				B3EC4B152CFE41AE00296721 /* Assembler.swift */,
-				B3B37BF62CFF83A30026341A /* ToDoList */,
+				B3B37BF62CFF83A30026341A /* List */,
+				B3F9C3B32D04A47A00348CDA /* DeteilScreen */,
 			);
 			path = ToDoListUIKit;
 			sourceTree = "<group>";
@@ -169,6 +176,16 @@
 				B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		B3F9C3B32D04A47A00348CDA /* DeteilScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B3F9C3B42D04A4F800348CDA /* DetailViewController.swift */,
+				B3F9C3B62D04A57700348CDA /* DetailPresenter.swift */,
+				B3F9C3B82D04A72B00348CDA /* DetailInteractor.swift */,
+			);
+			path = DeteilScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,13 +265,16 @@
 				B3EC4B142CFE3FF300296721 /* Router.swift in Sources */,
 				B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */,
 				B3B37C172D0225C80026341A /* ListItemEntity.swift in Sources */,
+				B3F9C3B52D04A4F800348CDA /* DetailViewController.swift in Sources */,
 				B3B37BFA2CFF87520026341A /* ListItemCell.swift in Sources */,
 				B3B37BF82CFF84140026341A /* ListViewController.swift in Sources */,
 				B3B37C0D2D01D6530026341A /* NetworkManager.swift in Sources */,
+				B3F9C3B92D04A72B00348CDA /* DetailInteractor.swift in Sources */,
 				B3EC4B162CFE41AE00296721 /* Assembler.swift in Sources */,
 				B3B37BFD2CFF91590026341A /* UIFont+.swift in Sources */,
 				B3B37C0B2D01D63D0026341A /* APIModels.swift in Sources */,
 				B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */,
+				B3F9C3B72D04A57700348CDA /* DetailPresenter.swift in Sources */,
 				B3B37C152D01FEFB0026341A /* ListInteractor.swift in Sources */,
 				B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */,
 				B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */,

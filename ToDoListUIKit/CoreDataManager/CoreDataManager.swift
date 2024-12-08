@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -17,7 +16,6 @@ class CoreDataManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        
         return container
     }()
     
@@ -25,29 +23,25 @@ class CoreDataManager {
         return persistentContainer.newBackgroundContext()
     }
     
-    
-    
-    func fetchList<T: NSManagedObject>(context: NSManagedObjectContext, type: T.Type, predicate: NSPredicate? = nil) -> [T] {
+    func fetch<T: NSManagedObject>(context: NSManagedObjectContext, type: T.Type, predicate: NSPredicate? = nil) -> [T] {
         let request = NSFetchRequest<T>(entityName: String(describing: type))
         request.predicate = predicate
         return (try? context.fetch(request)) ?? []
     }
     
     func findObject<T: NSManagedObject>(context: NSManagedObjectContext, type: T.Type, predicate: NSPredicate) -> T? {
-        return fetchList(context: context, type: type, predicate: predicate).first
+        return fetch(context: context, type: type, predicate: predicate).first
     }
-    
-    
     
     func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
-                try context.save()
+                try context.save() //сохранни контекста или измнний произошедших в этом конткмте
             } catch {
-                context.rollback()
+                context.rollback() //тип сли не может определить есть ли изменения то откатыват все к прошлой версии не  зная были изменения или нет он их откатывает
             }
         }
-        context.reset()
+        context.reset() //это что
     }
     
     func perform(_ block: @escaping (_ writeContext: NSManagedObjectContext) -> Void) {
@@ -65,7 +59,8 @@ class CoreDataManager {
     }
 }
 
-extension CoreDataManager: CreateListInLocalStorageProtocol {
+//MARK: - CreateInLocalStorageProtocol
+extension CoreDataManager: CreateInLocalStorageProtocol {
     func createTodos(containsOf: [(id: String, title: String, subtitle: String, completed: Bool)]) {
         perform {[weak self] writeContext in
             
@@ -78,39 +73,69 @@ extension CoreDataManager: CreateListInLocalStorageProtocol {
                 toDo.completed = item.completed
                 self?.saveContext(writeContext)
             }
-            
         }
-//        performAndSave { writeContext in
-//            containsOf.forEach({
-//                let toDo = ListItemLocalStore(context: writeContext)
-//                toDo.id = $0.id
-//                toDo.title = $0.title
-//                toDo.subtitle = $0.subtitle
-//                toDo.date = Date().timeIntervalSince1970
-//                toDo.completed = $0.completed
-//            })
-//        }
     }
 }
 
-extension CoreDataManager: ChangeStatusTaskInLocalStorageProtocol {
-    func setCompleted(status: Bool, todoId: String) {
+//MARK: - FetchFromLocalStorageProtocol
+extension CoreDataManager: FetchFromLocalStorageProtocol {
+    func fetchTodos(callback: @escaping ([ListItemLocalStore]) -> ()) {
+        perform {[weak self] context in
+            let list = self?.fetch(context: context, type: ListItemLocalStore.self) ?? []
+            callback(list)
+        }
+    }
+}
+
+//MARK: - DeleteItemInLocalStorageProtocol
+extension CoreDataManager: DeleteItemInLocalStorageProtocol {
+    func deleteTodo(id: String) {
         performAndSave {[weak self] writeContext in
             guard let model = self?.findObject(context: writeContext,
                                    type: ListItemLocalStore.self,
-                                   predicate: NSPredicate(format: "id = \(todoId)"))
+                                   predicate: NSPredicate(format: "id == %@", id))
+            else { return }
+            writeContext.delete(model)
+        }
+    }
+}
+
+//MARK: - ChangesTaskInLocalStorageProtocol
+extension CoreDataManager: ChangesTaskInLocalStorageProtocol {
+    func editStatus(status: Bool, todoId: String) {
+        performAndSave {[weak self] writeContext in
+            guard let model = self?.findObject(context: writeContext,
+                                   type: ListItemLocalStore.self,
+                                   predicate: NSPredicate(format: "id == %@", todoId))
             else { return }
             
             model.completed = status
         }
     }
+    
+    func editTodo(id: String, title: String, subtitle: String, date: Date) {
+        performAndSave {[weak self] writeContext in
+            guard let model = self?.findObject(context: writeContext,
+                                   type: ListItemLocalStore.self,
+                                   predicate: NSPredicate(format: "id == %@", id))
+            else { return }
+            
+            model.title = title
+            model.subtitle = subtitle
+            model.date = date.timeIntervalSince1970
+        }
+    }
 }
 
-extension CoreDataManager: FetchFromLocalStorageProtocol {
-    func fetchTodos(callback: @escaping ([ListItemLocalStore]) -> ()) {
+extension CoreDataManager: FindTodoInLocalStore {
+    func findTodo(id: String, callback: @escaping (ListItemLocalStore) -> ()) {
         perform {[weak self] context in
-            let list = self?.fetchList(context: context, type: ListItemLocalStore.self) ?? []
-            callback(list)
+            guard let model = self?.findObject(context: context,
+                                   type: ListItemLocalStore.self,
+                                   predicate: NSPredicate(format: "id == %@", id))
+            else { return }
+            
+            callback(model)
         }
     }
 }

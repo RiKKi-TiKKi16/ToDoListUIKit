@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIFont {
+    static var bold34: UIFont {
+        return .systemFont(ofSize: 34, weight: .bold)
+    }
+    
     static var button: UIFont {
         return .systemFont(ofSize: 16, weight: .regular)
     }
