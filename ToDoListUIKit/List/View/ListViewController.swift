@@ -12,14 +12,12 @@ protocol ListPresenterProtocol {
     func editStatus(completed: Bool, item: ListItemEntity)
     func edit(item: ListItemEntity)
     func share(item: ListItemEntity)
-    func delete(item: ListItemEntity) //добавить удаление в делегате?
-    func createNote()
+    func delete(item: ListItemEntity)
+    func createTodo()
     func search(text: String)
 }
 
-
 class ListViewController: UIViewController {
-    
     var data: [ListItemEntity] = []
     var presenter: ListPresenterProtocol?
     
@@ -74,9 +72,9 @@ class ListViewController: UIViewController {
         
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let label = UIBarButtonItem(customView: toolbarLabel)
-        let newNote = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(newNoteAction))
+        let newTodo = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(newTodoAction))
         
-        toolbar.setItems([spacer, label, spacer, newNote], animated: false)
+        toolbar.setItems([spacer, label, spacer, newTodo], animated: false)
         
         return toolbar
     }()
@@ -105,13 +103,11 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.loadData() //разве не в этот момент нужно включать иникатор загрузки ??
-        //почему это требование протокола а не внутренная возможность.....
-        //каждый раз когда появляется экран!
+        presenter?.loadData()
     }
     
-    @objc private func newNoteAction() {
-        presenter?.createNote()
+    @objc private func newTodoAction() {
+        presenter?.createTodo()
     }
     
     private func setToolbarTitle(count: Int) {
@@ -132,7 +128,7 @@ class ListViewController: UIViewController {
         guard let index = data.firstIndex(of: item) else { return }
         data.remove(at: index)
         setToolbarTitle(count: data.count)
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)                                   //-//
     }
 }
 
@@ -147,6 +143,17 @@ extension ListViewController: ListViewProtocol {
         func showLoader(isLoading: Bool) {
             isLoading ? loadIndicator.startAnimating() : loadIndicator.stopAnimating()
         }
+}
+
+//MARK: - UISearchBarDelegate
+extension ListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.search(text: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter?.search(text: "")
+    }
 }
 
 //MARK: - CellDelegateProtocol
@@ -184,6 +191,7 @@ extension ListViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
         let model = data[indexPath.row]
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {_ in
@@ -198,16 +206,6 @@ extension ListViewController: UITableViewDelegate {
             }
             return UIMenu(title: "", children: [editAction, shareAction, deleteAction])
         }
-    }
-}
-
-extension ListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter?.search(text: searchText)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        presenter?.search(text: "")
     }
 }
 

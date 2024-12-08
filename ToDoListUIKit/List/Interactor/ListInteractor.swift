@@ -36,8 +36,7 @@ protocol ListInteractorOutputProtocol: AnyObject {
     func deliverError(_ error: Error)
     func presentLoading(_ isLoading: Bool)
 }
-
-
+//Interactor отвечает за бизнес логику. Ходит в сервисы и производит вычисления.
 class ListInteractor {
     private var list: [ListItemEntity] = []
     var networkManager: ListNetworkProtocol?
@@ -85,7 +84,7 @@ extension ListInteractor: ListInteractorProtocol {
                 self?.deliverTodos()
             }
         })
-    }
+    }                                                                                                     //-//
     
     func editStatus(completed: Bool, item: ListItemEntity) {
         localStore?.editStatus(status: completed, todoId: item.id)
@@ -95,7 +94,7 @@ extension ListInteractor: ListInteractorProtocol {
         localStore?.deleteTodo(id: item.id)
         guard let index = list.firstIndex(of: item) else { return }
         list.remove(at: index)
-    }
+    }                                                                                                     //-//
     
     func search(text: String) {
         if text.isEmpty {

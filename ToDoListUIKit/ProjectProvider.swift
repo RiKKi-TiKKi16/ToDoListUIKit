@@ -8,7 +8,6 @@
 import UIKit
 
 //ProjectProvider - Тамбур. Собирает базовые сущьности: router, assembler. Прокидывает окно в router.
-//Дополнительный слой для оптимизации.
 class ProjectProvider {
     let router: StartRouterProtocol
     

@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol ListRouter {
+    func routeToDetail(id: String?) //func createTodo() && editTodo(item: ListItemEntity)
+    //func share(item: ListItemEntity)
+}
+
 protocol ListInteractorProtocol {
     func loadData()
     func editStatus(completed: Bool, item: ListItemEntity)
@@ -18,33 +23,11 @@ protocol ListViewProtocol: AnyObject {
     func deliver(_ data:[ListItemEntity])
     func showLoader(isLoading: Bool)
 }
-
-protocol ListRouter {
-    func routeToDetails(id: String?)
-}
-
-// func share(item: ListItemEntity) && func createNote() && edit(item: ListItemEntity) требования для роутера
-
+//Presenter - Ядро модуля. Отвечает за связи между объектами viper модуля.
 class ListPresenter {
     var router: ListRouter?
     var interactor: ListInteractorProtocol?
     weak var view: ListViewProtocol?
-}
-
-//MARK: - ListInteractorOutputProtocol
-extension ListPresenter: ListInteractorOutputProtocol{
-    
-    func deliverData(_ data: [ListItemEntity]) {
-        view?.deliver(data)
-    }
-    
-    func deliverError(_ error: any Error) {
-        //
-    }
-    
-    func presentLoading(_ isLoading: Bool) {
-        view?.showLoader(isLoading: isLoading)
-    }
 }
 
 //MARK: - ListPresenterProtocol
@@ -54,27 +37,39 @@ extension ListPresenter: ListPresenterProtocol{
         interactor?.loadData()
     }
     
+    func search(text: String) {
+        interactor?.search(text: text)
+    }
+    
     func editStatus(completed: Bool, item: ListItemEntity) {
         interactor?.editStatus(completed: completed, item: item)
     }
     
     func edit(item: ListItemEntity) {
-        router?.routeToDetails(id: item.id)
+        router?.routeToDetail(id: item.id)
     }
     
-    func share(item: ListItemEntity) {
-        
-    }
+    func share(item: ListItemEntity) {}
     
     func delete(item: ListItemEntity) {
         interactor?.delete(item: item)
     }
     
-    func createNote() {
-        router?.routeToDetails(id: nil)
+    func createTodo() {
+        router?.routeToDetail(id: nil)
+    }
+}
+
+//MARK: - ListInteractorOutputProtocol
+extension ListPresenter: ListInteractorOutputProtocol{
+    
+    func deliverData(_ data: [ListItemEntity]) {
+        view?.deliver(data)
     }
     
-    func search(text: String) {
-        interactor?.search(text: text)
+    func deliverError(_ error: any Error) {}
+    
+    func presentLoading(_ isLoading: Bool) {
+        view?.showLoader(isLoading: isLoading)
     }
 }

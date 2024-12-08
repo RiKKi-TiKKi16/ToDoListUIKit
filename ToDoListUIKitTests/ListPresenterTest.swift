@@ -51,7 +51,7 @@ class MockListRouter: ListRouter {
     var routeToDetailsCalled = false
     var routeToDetailsId: String?
     
-    func routeToDetails(id: String?) {
+    func routeToDetail(id: String?) {
         routeToDetailsCalled = true
         routeToDetailsId = id
     }
@@ -124,7 +124,7 @@ class ListPresenterTests: XCTestCase {
     }
     
     func testCreateNoteCallsRouterRouteToDetailsWithNilId() {
-        presenter.createNote()
+        presenter.createTodo()
         XCTAssertTrue(mockRouter.routeToDetailsCalled)
         XCTAssertNil(mockRouter.routeToDetailsId)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CellDelegateProtocol: AnyObject {
-    func cell(_ cell: ListItemCell, completed: Bool) //????? зачем передавать себя если там будет айдишник у каждой сел уникальный
+    func cell(_ cell: ListItemCell, completed: Bool)
 }
 
 class ListItemCell: UITableViewCell {
@@ -52,8 +52,6 @@ class ListItemCell: UITableViewCell {
         return stack
     }()
     
-    
-    
     private lazy var title: UILabel = {
         let title = UILabel()
         title.numberOfLines = 1
@@ -63,7 +61,6 @@ class ListItemCell: UITableViewCell {
     private lazy var descriptionSubtitle: UILabel = {
         let descriptionSubtitle = UILabel()
         descriptionSubtitle.numberOfLines = 2
-                                           //нужно настроить шрифт и задать высоту строк
         descriptionSubtitle.font = .caption
         return descriptionSubtitle
     }()
@@ -104,8 +101,8 @@ class ListItemCell: UITableViewCell {
 //        }
         
         self.title.attributedText = isCompleted ? self.completed(title: title) : self.notCompleted(title: title)
-        self.descriptionSubtitle.text = description //засунуть их вместе?
-        self.descriptionSubtitle.textColor = isCompleted ? .textGray : .textWhite //он не белый а прозрачный на 0.5 серого вообще нет
+        self.descriptionSubtitle.text = description
+        self.descriptionSubtitle.textColor = isCompleted ? .textGray : .textWhite
         self.taskDate.text = date
         self.checkButton.isSelected = isCompleted
     }

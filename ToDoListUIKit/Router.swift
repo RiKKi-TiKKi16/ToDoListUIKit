@@ -10,12 +10,9 @@ import UIKit
 protocol StartRouterProtocol: AnyObject {
     func start()
 }
-protocol ListRouterProtocol {}
-
-protocol DetailRouterProtocol {}
 
 //Router - Экспонент. Отвечает за переходы и отображение экранов/модулей.
-class Router: StartRouterProtocol {
+class Router {
     let assembler: StartAssemblerProtocol & DetailAssemblerProtocol
     let window: UIWindow
     var navController: UINavigationController!
@@ -24,7 +21,9 @@ class Router: StartRouterProtocol {
         self.assembler = assembler
         self.window = window
     }
-    
+}
+
+extension Router: StartRouterProtocol {
     func start() {
         navController = assembler.createNavController()
         window.rootViewController = navController
@@ -33,7 +32,7 @@ class Router: StartRouterProtocol {
 }
 
 extension Router: ListRouter {
-    func routeToDetails(id: String?) {
+    func routeToDetail(id: String?) {
         let vc = assembler.createToDoDetailViewController(id: id)
         navController.pushViewController(vc, animated: true)
     }

@@ -38,21 +38,21 @@ extension Assembler: StartAssemblerProtocol {
         return navVC
     }
 }
+
 extension Assembler: ListAssemblerProtocol {
     func createToDoListViewController() -> UIViewController {
         let vc = ListViewController()
         let presenter = ListPresenter()
-        presenter.router = router
-        vc.presenter = presenter
-        presenter.view = vc
-        
         let interactor = ListInteractor()
+        vc.presenter = presenter
+        
+        presenter.router = router
         presenter.interactor = interactor
-        interactor.presenter = presenter
+        presenter.view = vc
         
         interactor.networkManager = networkManager
         interactor.localStore = localStorage
-        
+        interactor.presenter = presenter
         return vc
     }
 }
@@ -60,17 +60,15 @@ extension Assembler: ListAssemblerProtocol {
 extension Assembler: DetailAssemblerProtocol {
     func createToDoDetailViewController(id: String?) -> UIViewController {
         let vc = DetailViewController()
-        
         let presenter = DetailPresenter()
-        vc.presenter = presenter
-        presenter.view = vc
-        
         let interactor = DetailInteractor(id: id)
-        interactor.presenter = presenter
-        interactor.localStore = localStorage
+        vc.presenter = presenter
         
         presenter.interactor = interactor
+        presenter.view = vc
         
+        interactor.localStore = localStorage
+        interactor.presenter = presenter
         return vc
     }
 }

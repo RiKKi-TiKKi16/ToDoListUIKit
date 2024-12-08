@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31295F12D07563100BC7760 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B31295EF2D07563100BC7760 /* CoreDataModel.xcdatamodeld */; };
 		B3A461D52D05A4190021014D /* ToDoListUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A461D42D05A4190021014D /* ToDoListUIKitTests.swift */; };
 		B3A461DC2D05A4840021014D /* ListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A461DB2D05A4840021014D /* ListPresenterTest.swift */; };
 		B3A461DE2D05A8380021014D /* ListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A461DD2D05A8380021014D /* ListInteractorTest.swift */; };
@@ -25,7 +26,6 @@
 		B3B37C132D01FB090026341A /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C122D01FB090026341A /* ListPresenter.swift */; };
 		B3B37C152D01FEFB0026341A /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C142D01FEFB0026341A /* ListInteractor.swift */; };
 		B3B37C172D0225C80026341A /* ListItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C162D0225C80026341A /* ListItemEntity.swift */; };
-		B3B37C1B2D0228110026341A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */; };
 		B3B37C1D2D0228260026341A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B37C1C2D0228260026341A /* CoreDataManager.swift */; };
 		B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */; };
 		B3EC4ADD2CFDCDAF00296721 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4ADC2CFDCDAF00296721 /* SceneDelegate.swift */; };
@@ -50,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B31295F02D07563100BC7760 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B3A461CA2D05A3510021014D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B3A461D22D05A4190021014D /* ToDoListUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A461D42D05A4190021014D /* ToDoListUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUIKitTests.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		B3B37C122D01FB090026341A /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		B3B37C142D01FEFB0026341A /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		B3B37C162D0225C80026341A /* ListItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemEntity.swift; sourceTree = "<group>"; };
-		B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B3B37C1C2D0228260026341A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B3EC4AD72CFDCDAF00296721 /* ToDoListUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EC4ADA2CFDCDAF00296721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +104,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B31295F22D07579100BC7760 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37BF92CFF87520026341A /* ListItemCell.swift */,
+				B3B37BF72CFF84140026341A /* ListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B31295F32D077A5D00BC7760 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37C122D01FB090026341A /* ListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B31295F42D078A5E00BC7760 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37C142D01FEFB0026341A /* ListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		B31295F52D078D1D00BC7760 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				B3B37C162D0225C80026341A /* ListItemEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		B3A461C92D05A3500021014D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,11 +160,10 @@
 		B3B37BF62CFF83A30026341A /* List */ = {
 			isa = PBXGroup;
 			children = (
-				B3B37BF92CFF87520026341A /* ListItemCell.swift */,
-				B3B37BF72CFF84140026341A /* ListViewController.swift */,
-				B3B37C122D01FB090026341A /* ListPresenter.swift */,
-				B3B37C142D01FEFB0026341A /* ListInteractor.swift */,
-				B3B37C162D0225C80026341A /* ListItemEntity.swift */,
+				B31295F22D07579100BC7760 /* View */,
+				B31295F32D077A5D00BC7760 /* Presenter */,
+				B31295F42D078A5E00BC7760 /* Interactor */,
+				B31295F52D078D1D00BC7760 /* Entity */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -168,7 +200,7 @@
 		B3B37C182D0227F80026341A /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */,
+				B31295EF2D07563100BC7760 /* CoreDataModel.xcdatamodeld */,
 				B3B37C1C2D0228260026341A /* CoreDataManager.swift */,
 			);
 			path = CoreDataManager;
@@ -178,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				B3EC4AD92CFDCDAF00296721 /* ToDoListUIKit */,
+				B3B37C092D01D6010026341A /* NetworkManager */,
+				B3B37C182D0227F80026341A /* CoreDataManager */,
 				B3A461D32D05A4190021014D /* ToDoListUIKitTests */,
 				B3EC4AD82CFDCDAF00296721 /* Products */,
 				B3A461C92D05A3500021014D /* Frameworks */,
@@ -196,10 +230,8 @@
 		B3EC4AD92CFDCDAF00296721 /* ToDoListUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				B3B37C182D0227F80026341A /* CoreDataManager */,
-				B3B37C092D01D6010026341A /* NetworkManager */,
-				B3B37BFB2CFF914D0026341A /* Helpers */,
 				B3EC4B102CFE348800296721 /* SupportingFiles */,
+				B3B37BFB2CFF914D0026341A /* Helpers */,
 				B3EC4B172CFE5BC300296721 /* Application */,
 				B3EC4B112CFE3B5500296721 /* ProjectProvider.swift */,
 				B3EC4B132CFE3FF300296721 /* Router.swift */,
@@ -356,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B31295F12D07563100BC7760 /* CoreDataModel.xcdatamodeld in Sources */,
 				B3EC4B142CFE3FF300296721 /* Router.swift in Sources */,
 				B3EC4ADB2CFDCDAF00296721 /* AppDelegate.swift in Sources */,
 				B3B37C172D0225C80026341A /* ListItemEntity.swift in Sources */,
@@ -374,7 +407,6 @@
 				B3EC4B122CFE3B5500296721 /* ProjectProvider.swift in Sources */,
 				B3B37BFF2CFF94DC0026341A /* UIColor+.swift in Sources */,
 				B3B37C1D2D0228260026341A /* CoreDataManager.swift in Sources */,
-				B3B37C1B2D0228110026341A /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,14 +674,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B3B37C192D0228110026341A /* CoreDataModel.xcdatamodeld */ = {
+		B31295EF2D07563100BC7760 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */,
+				B31295F02D07563100BC7760 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = B3B37C1A2D0228110026341A /* CoreDataModel.xcdatamodel */;
+			currentVersion = B31295F02D07563100BC7760 /* CoreDataModel.xcdatamodel */;
 			name = CoreDataModel.xcdatamodeld;
-			path = /Users/annaruslanovna/Documents/ToDoListUIKit/ToDoListUIKit/CoreDataManager/CoreDataModel.xcdatamodeld;
+			path = /Users/annaruslanovna/Documents/ToDoListUIKit/CoreDataManager/CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

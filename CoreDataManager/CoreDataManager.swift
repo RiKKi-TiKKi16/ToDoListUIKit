@@ -36,12 +36,12 @@ class CoreDataManager {
     func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
-                try context.save() //сохранни контекста или измнний произошедших в этом конткмте
+                try context.save() //изменения произошедшие в контексте
             } catch {
-                context.rollback() //тип сли не может определить есть ли изменения то откатыват все к прошлой версии не  зная были изменения или нет он их откатывает
+                context.rollback() //откатывает изменения
             }
         }
-        context.reset() //это что
+        context.reset() //возвращает контекст в его базовое состояние
     }
     
     func perform(_ block: @escaping (_ writeContext: NSManagedObjectContext) -> Void) {
@@ -127,6 +127,10 @@ extension CoreDataManager: ChangesTaskInLocalStorageProtocol {
     }
 }
 
+
+
+
+//MARK: - FindTodoInLocalStore                                                                              //-//
 extension CoreDataManager: FindTodoInLocalStore {
     func findTodo(id: String, callback: @escaping (ListItemLocalStore) -> ()) {
         perform {[weak self] context in
