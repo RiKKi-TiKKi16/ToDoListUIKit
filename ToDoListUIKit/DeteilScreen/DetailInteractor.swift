@@ -19,7 +19,7 @@ class DetailInteractor {
     var localStore: (CreateInLocalStorageProtocol & FindTodoInLocalStore & ChangesTaskInLocalStorageProtocol)?
     weak var presenter: DetailInteractorOutputProtocol?
     let id: String?
-    private lazy var createdId = UUID()
+    private var createdId: UUID?
     
     var title = String() {
         didSet {
@@ -55,17 +55,24 @@ extension DetailInteractor: DetailInteractorProtocol {
     }
     
     private func createTodo() {
-        localStore?.createTodos(containsOf: [(id: createdId.uuidString,
-                                              title: "",
-                                              subtitle: "",
-                                              completed: false)])
+        
     }
     
     func save() {
-        localStore?.editTodo(id: id ?? createdId.uuidString,
-                             title: title,
-                             subtitle: description,
-                             date: date)
+        if id == nil && createdId == nil {
+            let createdId = UUID()
+            self.createdId = createdId
+            localStore?.createTodos(containsOf: [(id: createdId.uuidString,
+                                                  title: title,
+                                                  subtitle: description,
+                                                  completed: false)])
+        } else if let id = id ?? createdId?.uuidString {
+            localStore?.editTodo(id: id,
+                                 title: title,
+                                 subtitle: description,
+                                 date: date)
+        }
+        
     }
 }
 
