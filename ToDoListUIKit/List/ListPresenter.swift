@@ -11,6 +11,7 @@ protocol ListInteractorProtocol {
     func loadData()
     func editStatus(completed: Bool, item: ListItemEntity)
     func delete(item: ListItemEntity)
+    func search(text: String)
 }
 
 protocol ListViewProtocol: AnyObject {
@@ -71,5 +72,9 @@ extension ListPresenter: ListPresenterProtocol{
     
     func createNote() {
         router?.routeToDetails(id: nil)
+    }
+    
+    func search(text: String) {
+        interactor?.search(text: text)
     }
 }

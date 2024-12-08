@@ -96,6 +96,15 @@ extension ListInteractor: ListInteractorProtocol {
         guard let index = list.firstIndex(of: item) else { return }
         list.remove(at: index)
     }
+    
+    func search(text: String) {
+        if text.isEmpty {
+            presenter?.deliverData(list)
+        } else {
+            let filter = list.filter({ $0.title.contains(text) || $0.subtitle.contains(text) })
+            presenter?.deliverData(filter)
+        }
+    }
 }
 
 //MARK: - extension ListItemEntity

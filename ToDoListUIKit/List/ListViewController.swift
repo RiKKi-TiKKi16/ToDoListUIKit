@@ -14,6 +14,7 @@ protocol ListPresenterProtocol {
     func share(item: ListItemEntity)
     func delete(item: ListItemEntity) //добавить удаление в делегате?
     func createNote()
+    func search(text: String)
 }
 
 
@@ -24,6 +25,7 @@ class ListViewController: UIViewController {
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
+        controller.searchBar.delegate = self
         return controller
     }()
     
@@ -196,6 +198,16 @@ extension ListViewController: UITableViewDelegate {
             }
             return UIMenu(title: "", children: [editAction, shareAction, deleteAction])
         }
+    }
+}
+
+extension ListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.search(text: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter?.search(text: "")
     }
 }
 
