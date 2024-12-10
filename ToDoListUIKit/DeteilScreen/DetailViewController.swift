@@ -69,6 +69,10 @@ class DetailViewController: UIViewController {
         buildText()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func dateString() -> String {
         
         let date = presenter?.date ?? Date()

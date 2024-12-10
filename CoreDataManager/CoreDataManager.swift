@@ -127,9 +127,6 @@ extension CoreDataManager: ChangesTaskInLocalStorageProtocol {
     }
 }
 
-
-
-
 //MARK: - FindTodoInLocalStore                                                                              //-//
 extension CoreDataManager: FindTodoInLocalStore {
     func findTodo(id: String, callback: @escaping (ListItemLocalStore) -> ()) {
